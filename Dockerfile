@@ -8,4 +8,8 @@ RUN opam update --yes && opam install --yes caml-mode merlin ocamlformat tuareg
 RUN eval $(opam env)
 WORKDIR /home/besport
 COPY --chown=besport . .
+RUN emacs --batch --load .emacs.d/lisp/util.el --quick \
+	  --eval "(progn \
+		    (util-init-package-archives) \
+		    (package-refresh-contents))"
 CMD ["bash"]
