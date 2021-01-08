@@ -13,7 +13,7 @@ docker-build:
 
 docker-debug-emacs-init: docker-build
 	docker run --interactive --rm --tty $(DOCKER_IMAGE_TAG)	\
-		emacs --debug-init
+		bash -ci emacs --debug-init
 
 install-bash-config:
 	grep -q "if \[ -f ~/.besport_bashrc.bash ]; then" ~/.bashrc	\
