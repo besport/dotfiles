@@ -2,6 +2,7 @@
 !/Dockerfile
 !/Makefile
 !/README.md
+!/.besport_bashrc.bash
 !/.dockerignore
 !/.emacs.d/init.el
 !/.emacs.d/

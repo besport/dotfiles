@@ -13,4 +13,5 @@ RUN emacs --batch --load .emacs.d/lisp/util.el --quick \
 	  --eval "(progn \
 		    (util-init-package-archives) \
 		    (package-refresh-contents))"
+RUN make install
 CMD ["bash"]
