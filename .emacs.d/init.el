@@ -31,12 +31,15 @@
   (setq whitespace-global-modes '(not dired-mode archive-mode)
         ;; Turn off whitespace-mode in Dired-like buffers.
 
-        whitespace-style (cl-set-difference whitespace-style '(tabs
-                                                               spaces
-                                                               newline
-                                                               space-mark
-                                                               tab-mark
-                                                               newline-mark))
+        whitespace-style (cl-set-difference
+                          (cl-union whitespace-style '(lines-tail))
+                          '(tabs
+                            spaces
+                            lines
+                            newline
+                            space-mark
+                            tab-mark
+                            newline-mark))
         ;; Do not display spaces, tabs and newlines marks.
 
         whitespace-action '(auto-cleanup)))
