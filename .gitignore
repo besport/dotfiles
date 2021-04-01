@@ -3,7 +3,7 @@
 !/Makefile
 !/README.md
 !/.dockerignore
-!/.emacs
+!/.emacs.d/init.el
 !/.emacs.d/
 !/.emacs.d/lisp/
 !/.emacs.d/lisp/util.el
