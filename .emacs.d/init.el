@@ -106,11 +106,20 @@
 (global-subword-mode 1)
 (global-whitespace-mode 1)
 (when (fboundp 'ivy-mode) (ivy-mode 1))
+
 (menu-bar-mode 0)
+;; Remove the top menu bar.
+
 (savehist-mode 1)
+
 (scroll-bar-mode 0)
+;; Remove the vertical scroll bars.
+
 (show-paren-mode 1)
+
 (tool-bar-mode 0)
+;; Remove the top tool bar.
+
 (windmove-default-keybindings)
 (winner-mode 1)
 
