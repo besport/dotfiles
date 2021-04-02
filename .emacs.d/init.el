@@ -85,7 +85,7 @@
 ;; Source:
 ;; https://github.com/emacs-mirror/emacs/blob/2e7402b760576b54a326fca593c948a73bc3d6d0/lisp/vc/smerge-mode.el#L33-L38
 
-(add-hook 'prog-mode-hook 'lsp-deferred)
+(when (fboundp 'lsp-deferred) (add-hook 'prog-mode-hook 'lsp-deferred))
 
 (add-hook 'tuareg-mode-hook
           (lambda ()
