@@ -2,7 +2,7 @@
 
 (require 'util)
 (util-init-package-archives)
-(setq package-selected-packages '(gnu-elpa-keyring-update ivy))
+(setq package-selected-packages '(gnu-elpa-keyring-update ivy lsp-mode))
 (package-initialize)
 (package-install-selected-packages)
 
@@ -16,7 +16,6 @@
 
 (add-to-list 'load-path opam-lisp-dir)
 (load (concat opam-lisp-dir "tuareg-site-file"))
-(require 'merlin)
 (require 'dune)
 (require 'ocamlformat)
 
@@ -50,8 +49,6 @@
       compilation-context-lines 0
       disabled-command-function nil
       inhibit-startup-screen t
-      merlin-command 'opam
-      merlin-completion-with-doc t
       sql-product 'postgres
       track-eol t
       tuareg-interactive-read-only-input t
@@ -88,6 +85,8 @@
 ;; Source:
 ;; https://github.com/emacs-mirror/emacs/blob/2e7402b760576b54a326fca593c948a73bc3d6d0/lisp/vc/smerge-mode.el#L33-L38
 
+(add-hook 'prog-mode-hook 'lsp-deferred)
+
 (add-hook 'tuareg-mode-hook
           (lambda ()
             (setq ff-other-file-alist '(("\\.mli\\'" (".ml"))
@@ -99,7 +98,12 @@
                         (concat tuareg-interactive-program " -nopromptcont"))
             (local-set-key (kbd "C-c C-a") 'ff-get-other-file)
             (add-hook 'before-save-hook 'ocamlformat-before-save t t)
-            (merlin-mode)))
+
+            ;; HACK: Otherwise, LSP complains about internal errors on
+            ;; some .eliom(i) files.
+            (let ((ext (file-name-extension buffer-file-name)))
+              (when (member ext '("eliom" "eliomi"))
+                (setq-local lsp-modeline-code-actions-enable nil)))))
 
 (column-number-mode 1)
 (delete-selection-mode 1)
