@@ -4,7 +4,8 @@ RUN apt-get update --yes && \
 RUN adduser besport
 USER besport
 RUN opam init --auto-setup --disable-sandboxing --yes
-RUN opam update --yes && opam install --yes caml-mode merlin ocamlformat tuareg
+RUN opam update --yes && opam install --yes caml-mode ocaml-lsp-server \
+    ocamlformat tuareg
 RUN eval $(opam env)
 WORKDIR /home/besport
 COPY --chown=besport . .
