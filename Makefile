@@ -2,11 +2,12 @@ SHELL = /bin/sh
 DOCKER_IMAGE_TAG = besport-dotfiles
 
 .SUFFIXES:
-.PHONY: all docker-build docker-debug-emacs-init install install-bash-config
+.PHONY: all docker-build docker-debug-emacs-init install	\
+	install-bash-config install-emacs
 
 all: docker-build
 
-install: install-bash-config
+install: install-bash-config install-emacs
 
 docker-build:
 	docker build --tag $(DOCKER_IMAGE_TAG) .
@@ -21,3 +22,9 @@ install-bash-config:
 		"[ -f ~/.besport_bashrc.bash ]"				\
 		". ~/.besport_bashrc.bash"				\
 		>> ~/.bashrc
+
+install-emacs:
+	emacs --batch --load .emacs.d/lisp/util.el --quick	\
+	  --eval "(progn					\
+		    (util-init-package-archives)		\
+		    (package-refresh-contents))"
