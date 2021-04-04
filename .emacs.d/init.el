@@ -40,8 +40,7 @@
                             tab-mark
                             newline-mark))
         ;; Do not display spaces, tabs and newlines marks.
-
-        whitespace-action '(auto-cleanup)))
+        ))
 
 (setq comint-prompt-read-only t
       comment-multi-line t
@@ -70,6 +69,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.[^\\.].*\\'" nil t) t)
 ;; Hack to open files like Makefile.local with the right mode.
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (add-hook 'text-mode-hook 'auto-fill-mode)
 
