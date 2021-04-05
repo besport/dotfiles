@@ -3,11 +3,11 @@ DOCKER_IMAGE_TAG = besport-dotfiles
 
 .SUFFIXES:
 .PHONY: all docker-build docker-debug-emacs-init install	\
-	install-bash-config install-emacs
+	install-bash-config install-emacs install-vscode
 
 all: docker-build
 
-install: install-bash-config install-emacs
+install: install-bash-config install-emacs install-vscode
 
 docker-build:
 	docker build --tag $(DOCKER_IMAGE_TAG) .
@@ -28,3 +28,8 @@ install-emacs:
 	  --eval "(progn					\
 		    (util-init-package-archives)		\
 		    (package-refresh-contents))"
+
+install-vscode:
+	code --install-extension esbenp.prettier-vscode
+	code --install-extension ocamllabs.ocaml-platform
+	code --install-extension stylelint.vscode-stylelint

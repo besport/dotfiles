@@ -8,5 +8,5 @@ RUN opam update --yes && opam install --yes caml-mode ocaml-lsp-server \
     ocamlformat tuareg
 WORKDIR /home/besport
 COPY --chown=besport . .
-RUN make install
+RUN make install-bash-config install-emacs
 CMD ["bash"]
