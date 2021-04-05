@@ -15,7 +15,7 @@ git init
 git remote add origin git@github.com:besport/dotfiles.git
 git fetch origin
 git checkout master
-make install
+make install # or `make install-<component>` to install <component> individually
 ```
 
 ## Emacs
