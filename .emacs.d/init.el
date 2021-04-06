@@ -133,4 +133,15 @@
 
 (server-start)
 ;; Allow this Emacs process to be a server for client processes started
-;; using the command emacsclient.
+;; using the command emacsclient.  To make use of this feature, you can
+;; put the following lines in your `.bashrc':
+;;
+;;     emacsclient_frame="emacsclient --alternate-editor=emacs --create-frame"
+;;     export EDITOR=$emacsclient_frame
+;;     alias emacsc=$emacsclient_frame
+;;
+;; Run first and only once the command `emacs' to start the server and
+;; then use `emacsc' to start a new Emacs client in its own graphical
+;; window.  See
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html
+;; for more details.
