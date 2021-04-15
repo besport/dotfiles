@@ -3,6 +3,10 @@
 !/Makefile
 !/README.md
 !/.besport_bashrc.bash
+!/.config/
+!/.config/Code
+!/.config/Code/User/
+!/.config/Code/User/settings.json
 !/.dockerignore
 !/.emacs.d/init.el
 !/.emacs.d/
