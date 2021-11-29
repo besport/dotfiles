@@ -9,7 +9,7 @@ If we're going to work on different projects with a local opam config to these p
 Once this is done, in each of these repositories we're going to execute this command to create a different opam *switch*:
 
 ```
-opam switch create --empty
+opam switch create --empty .
 ```
 
 As you may have guessed, an opam *switch* is an independent installation with its own compiler and sets of installed and pinned packages.
