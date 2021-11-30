@@ -2,6 +2,7 @@
 !/Dockerfile
 !/Makefile
 !/README.md
+!/opam_switch_config.md
 !/.besport_bashrc.bash
 !/.config/
 !/.config/Code/
